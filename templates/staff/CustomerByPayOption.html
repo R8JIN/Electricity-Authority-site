@@ -1,0 +1,15 @@
+{% extends 'Report.html' %}
+{% block content %}
+    {% for key, value in customer.items %}
+    <h4>{{key}}</h4>
+    <ul>
+        {% if not value  %}
+            <li>None of the customer use this payment gateway</li>
+        {% else %}
+            {% for v in value %}
+                <li>{{v}}</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+<div class="container justify-content-center ">
+    <h4> Managing Bill</h4>
+        <form class="mt-2" action="{% url 'Bill' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3 mt-2">
+            <label for="Date" class="form-label">Bill Date</label>
+            <input type="number" class="form-control" id="Date" name="BDate" >
+            </div>
+            <div class="mb-3 mt-2">
+            <label for="year" class="form-label">Bill Year</label>
+            <input type="number" class="form-control" id="Year" name="BYear" >
+            </div>
+            <div class="mb-3 mt-2">
+            <label for="Month" class="form-label">Bill Month</label>
+            <input type="number" class="form-control" id="Month" name="BMonth" >
+            </div>
+            <div class="mb-3">
+            <label for="cusid" class="form-label">Customer ID</label>
+            <input type="text" class="form-control" id="cusid" name="CusID">
+            </div>
+            <div class="mb-3">
+            <label for="cusid" class="form-label">Current Reading</label>
+            <input type="text" class="form-control" id="current" name="CReading">
+            </div>
+            <div class="mb-3">
+            <label for="cusid" class="form-label">Current Reading</label>
+            <input type="text" class="form-control" id="previous" name="CPrevious">
+            </div>
+            <div class="mb-3">
+            <label for="cusid" class="form-label">Bill Amount</label>
+            <input type="number" class="form-control" id="amount" name="BAmount">
+            </div>
+
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

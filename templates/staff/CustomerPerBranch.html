@@ -1,0 +1,13 @@
+{% extends 'Report.html' %}
+{% block content %}
+    {% regroup customer by branch as cusperbranchlist %}
+    {% for cusperbranch in cusperbranchlist %}
+        <h3>{{cusperbranch.grouper}}</h3>
+        <ul>
+        {% for cus in cusperbranch.list %}
+            <li>{{cus.fullname}}</li>
+        {% endfor %}
+        <b>Total no of Customers: {{ cusperbranch.list| length }}</b>
+        </ul>
+    {% endfor %}
+{% endblock %}

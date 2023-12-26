@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="justify-content-center"><h3> Payment </h3></div>
+
+<form class="mt-2" action="{% url 'dopay' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="pid" class="form-label">Payment ID</label>
+      <input type="text" class="form-control" name="pid" id="pid">
+    </div>
+    <div class="mb-3">
+      <label for="BID" class="form-label">Bill ID</label>
+      <input type="number" class="form-control" name="bid" id="BID">
+    </div>
+    <div class="mb-3">
+      <label for="pdate" class="form-label">Payment Date</label>
+      <input type="date" class="form-control" name="pdate" id="pdate">
+    </div>
+        <div class="mb-3">
+      <label for="pamt" class="form-label">Payment Amount</label>
+      <input type="number" class="form-control" name="pname" id="pamt">
+    </div>
+    <div class="mb-3">
+            <div class="mb-3">
+                <select class="form-select" aria-label="Option select example" name="paydo">
+                    <option selected>Payment type select</option>
+                    {% for dt in paymenttype %}
+                    <option value="{{dt.poid}}">{{dt.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    </div>
+     <div class="mb-3">
+      <label for="rebate" class="form-label">Rebate Amount</label>
+      <input type="number" class="form-control" name="rebate" id="rebate">
+    </div>
+         <div class="mb-3">
+      <label for="fine" class="form-label">Fine Amount</label>
+      <input type="number" class="form-control" name="fine" id="fine">
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+{% endblock %}

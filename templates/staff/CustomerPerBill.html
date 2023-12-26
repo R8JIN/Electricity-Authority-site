@@ -1,0 +1,36 @@
+{% extends 'Report.html' %}
+{% block content %}
+       {% for ba in branch %}
+        <table class="table">
+            <h5>{{ba.name}}</h5>
+        <thead>
+            <tr>
+              <th scope="col">Bill Year</th>
+              <th scope="col">Bill month</th>
+              <th scope="col">Bill date</th>
+              <th scope="col">Customer ID</th>
+              <th scope="col">Current Reading</th>
+              <th scope="col">Previous Reading</th>
+              <th scope="col">Bill Amount</th>
+            </tr>
+          </thead>
+        <tbody>
+        {% for b in bill %}
+            {% if b %}
+                {% if b.cusid.branch == ba %}
+                <tr>
+                  <td>{{b.byear}}</td>
+                  <td>{{b.bmonth}}</td>
+                  <td>{{b.bdate}}</td>
+                  <td>{{b.cusid.fullname}}</td>
+                  <td>{{b.current_reading}}</td>
+                  <td>{{b.prev_reading}}</td>
+                  <td>{{b.bamount}}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}

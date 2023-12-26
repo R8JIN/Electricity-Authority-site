@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3> Customer Details</h3>
+ <ul class="list-group">
+  <li class="list-group-item">Customer ID: {{Customer.cusid}}</li>
+  <li class="list-group-item">Name: {{Customer.fullname}}</li>
+  <li class="list-group-item">Address: {{Customer.address}}</li>
+  <li class="list-group-item">Mobile No: {{Customer.mobileno}}</li>
+  <li class="list-group-item">Branch: {{Customer.branch}}</li>
+  <li class="list-group-item">Demand type: {{Customer.demand_type}}</li>
+</ul>
+
+<div class="row mt-4">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Bill date</th>
+      <th scope="col">Bill Year</th>
+      <th scope="col">Bill month</th>
+      <th scope="col">Customer ID</th>
+      <th scope="col">Current Reading</th>
+      <th scope="col">Previous Reading</th>
+      <th scope="col">Bill Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for b in Bill %}
+    <tr>
+      <td>{{b.date}}</td>
+      <td>{{b.bmonth}}</td>
+      <td>{{b.byear}}</td>
+      <td>{{b.cusid.cusid}}</td>
+      <td>{{b.current_readin}}</td>
+      <td>{{b.prev_reading}}</td>
+      <td>{{b.bamount}}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+    </div>
+
+
+<div class="row mt-4">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">pid</th>
+      <th scope="col">bid</th>
+      <th scope="col">pdate</th>
+      <th scope="col">pamount</th>
+      <th scope="col">payment_type</th>
+      <th scope="col">rebate_amt</th>
+      <th scope="col">fine_amt</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for p in Payment %}
+    <tr>
+      <td>{{p.pid}}</td>
+      <td>{{p.bid.bid}}</td>
+      <td>{{p.pdate}}</td>
+      <td>{{p.pamount}}</td>
+      <td>{{p.payment_type.name}}</td>
+      <td>{{p.rebate_amt}}</td>
+      <td>{{p.fine_amt}}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'Report.html' %}
+{% block content %}
+    {% for key,value in dict.items %}
+        <h5>{{key}}</h5>
+        <ul>
+        {% if value %}
+            {% for k, v in value.items %}
+                <li>Total Bill Amount of {{k}}: {{v}}</li>
+            {% endfor %}
+        {% else %}
+                    <li>Empty</li>
+        {% endif %}
+        </ul>
+    {% endfor %}
+{% endblock %}

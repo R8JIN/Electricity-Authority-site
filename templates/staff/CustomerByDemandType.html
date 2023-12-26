@@ -1,0 +1,13 @@
+{% extends 'Report.html' %}
+{% block content %}
+{% regroup customer by demand_type as newlist %}
+{% for demandlist in newlist %}
+  <h3>{{demandlist.grouper}}</h3>
+  <ul>
+  {% for cus in demandlist.list %}
+    <li>{{cus.fullname}}</li>
+  {% endfor %}
+    <b>Total no. of customers: {{ demandlist.list| length }}</b>
+  </ul>
+{% endfor %}
+{% endblock %}

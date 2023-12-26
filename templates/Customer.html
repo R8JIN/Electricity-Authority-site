@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container justify-content-center ">
+    <h4> Managing Customer Details</h4>
+        <form class="mt-2" action="{% url 'Customer' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3 mt-2">
+                <label for="exampleFormControlInput1" class="form-label">SC No</label>
+                <input type="number" class="form-control" id="exampleFormControlInput1" name="scno" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="exampleFormControlTextarea1" name="CName">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="Address">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Contact</label>
+                <input type="tel" class="form-control" id="Contact" name="Contact">
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Branch select example" name="Branch">
+                    <option selected>Branch select</option>
+                    {% for b in branch %}
+                    <option value="{{b.branch_id}}">{{b.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Demand Rate" name="DemandRate">
+                    <option selected>Demand Rate select</option>
+                    {% for dt in demandtype %}
+                    <option value="{{dt.description}}">{{dt.description}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
+{% endblock %}
